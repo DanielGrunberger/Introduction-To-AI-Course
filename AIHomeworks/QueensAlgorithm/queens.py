@@ -49,6 +49,8 @@ def improve(board):
 def solve(size):
     #solves the (size) quenns problem
     b=rndboard(size)
+    print("Initial board is : ")
+    printboard(b)
     n=threats(b)
     while n>0:
         x=improve(b)
@@ -57,6 +59,7 @@ def solve(size):
             n=threats(b)
         else:
             n=x
+    print("Solution :")
     printboard(b)
             
     
