@@ -62,7 +62,7 @@ def solve(size):
     print("Solution :")
     printboard(b)
             
-    
+# 10 is size
 solve(10)
 
     
