@@ -9,7 +9,6 @@ The target for 8-puzzle is: (zero is the hole)
 import random
 import math
 
-
 #returns a random board nXn
 def create(n):
     s=list(range(n*n))      # s is the board itself. a vector that represent a matrix. s=[0,1,2....n^2-1]
@@ -18,7 +17,6 @@ def create(n):
         if_legal(s,m[random.randrange(4)])
     return [s,""]           # at the beginning "" is an empty path, later on path
                             # contains the path that leads from the initial state to the state
-
 
 def get_next(x):            # returns a list of the children states of x
     ns=[]                   # the next state list
@@ -35,11 +33,9 @@ def get_next(x):            # returns a list of the children states of x
 def path_len(x):
     return len(x[1])
 
-
 def is_target(x):
     n=len(x[0])                     # the size of the board
     return x[0]==list(range(n))     # list(range(n)) is the target state
-
 
 #############################
 def if_legal(x,m):                  # gets a board and a move and makes the move if it's legal
@@ -59,20 +55,23 @@ def if_legal(x,m):                  # gets a board and a move and makes the move
         x[z+n]=0
 
 
-# This is your HW
-def hdistance(s):                   # the heuristic value of s -- uniform cost
-    return hdistance2(s)
+def hdistance(s):
+    c=0
+    for i in range(1,len(s[0])):
+        if s[0].index(i)!=i:
+            c+=1
+    return c
 
 
-def hdistance1(s):                   # for h1 (tiles out of place)
+def hdistance2(s):
     not_in_place = 0
     for i in range(0, len(s[0])):
         if s[0][i] != i:
-            not_in_place = not_in_place + 1
-    return not_in_place
+            not_in_place += 1
+    return not_in_place 
 
-
-def hdistance2(s):                   # for h2 (Manhattan)
+# Manhattan
+def hdistance3(s):
     size = len(s[0])
     distance_sum = 0
     for i in range(size):
@@ -82,4 +81,5 @@ def hdistance2(s):                   # for h2 (Manhattan)
             target_x = s[0][i] % math.sqrt(size)
             target_y = int(s[0][i] / math.sqrt(size))
             distance_sum = distance_sum + abs(target_x - x) + abs(target_y - y)
+    
     return distance_sum
