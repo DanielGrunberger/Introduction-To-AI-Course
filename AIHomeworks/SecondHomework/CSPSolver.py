@@ -1,5 +1,4 @@
-#Avigail Fuchs, 211976949
-#Shir Shraiber,206387862
+
 import CSProblem
 import copy
 
