@@ -54,7 +54,7 @@ def if_legal(x,m):                  # gets a board and a move and makes the move
         x[z]=x[z+n]
         x[z+n]=0
 
-
+# Who is not in the right place
 def hdistance(s):
     c=0
     for i in range(1,len(s[0])):
@@ -63,12 +63,7 @@ def hdistance(s):
     return c
 
 
-def hdistance2(s):
-    not_in_place = 0
-    for i in range(0, len(s[0])):
-        if s[0][i] != i:
-            not_in_place += 1
-    return not_in_place 
+
 
 # Manhattan
 def hdistance3(s):
